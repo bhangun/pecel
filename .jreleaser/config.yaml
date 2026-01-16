@@ -24,24 +24,24 @@ distributions:
     executable:
       name: pecel
     artifacts:
-      - path: ./bin/pecel
+      - path: ./dist/linux-amd64/pecel
         platform: 'linux_amd64'
-        transform: './bin/pecel -> {{distributionName}}'
-      - path: ./bin/pecel
+        transform: './dist/linux-amd64/pecel -> {{distributionName}}'
+      - path: ./dist/linux-arm64/pecel
         platform: 'linux_arm64'
-        transform: './bin/pecel -> {{distributionName}}'
-      - path: ./bin/pecel
+        transform: './dist/linux-arm64/pecel -> {{distributionName}}'
+      - path: ./dist/darwin-amd64/pecel
         platform: 'darwin_amd64'
-        transform: './bin/pecel -> {{distributionName}}'
-      - path: ./bin/pecel
+        transform: './dist/darwin-amd64/pecel -> {{distributionName}}'
+      - path: ./dist/darwin-arm64/pecel
         platform: 'darwin_arm64'
-        transform: './bin/pecel -> {{distributionName}}'
-      - path: ./bin/pecel.exe
+        transform: './dist/darwin-arm64/pecel -> {{distributionName}}'
+      - path: ./dist/windows-amd64/pecel.exe
         platform: 'windows_amd64'
-        transform: './bin/pecel.exe -> {{distributionName}}.exe'
-      - path: ./bin/pecel.exe
+        transform: './dist/windows-amd64/pecel.exe -> {{distributionName}}.exe'
+      - path: ./dist/windows-arm64/pecel.exe
         platform: 'windows_arm64'
-        transform: './bin/pecel.exe -> {{distributionName}}.exe'
+        transform: './dist/windows-arm64/pecel.exe -> {{distributionName}}.exe'
 
 signing:
   active: ALWAYS
@@ -92,10 +92,7 @@ packagers:
 files:
   active: RELEASE
   artifacts:
-    - path: '/bin/**/*pecel*'
-      extraProperties:
-        packager: brew,chocolatey
-    - path: '/dist/**/*pecel*'
+    - path: './dist/**/*pecel*'
       extraProperties:
         packager: brew,chocolatey
 

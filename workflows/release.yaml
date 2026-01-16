@@ -159,5 +159,5 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: ${{ github.event_name != 'pull_request' }}
         tags: |
-          yourusername/pecel:latest
-          yourusername/pecel:${{ env.VERSION }}
+          bhangun/pecel:latest
+          bhangun/pecel:${{ env.VERSION }}

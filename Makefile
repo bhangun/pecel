@@ -38,10 +38,13 @@ build:
 
 build-all:
 	@echo "$(CYAN)Building for all platforms...$(NC)"
-	@mkdir -p dist/linux-amd64 dist/darwin-amd64 dist/windows-amd64
+	@mkdir -p dist/linux-amd64 dist/linux-arm64 dist/darwin-amd64 dist/darwin-arm64 dist/windows-amd64 dist/windows-arm64
 	GOOS=linux GOARCH=amd64 go build -ldflags="-s -w -X main.version=$(VERSION)" -o dist/linux-amd64/$(BINARY_NAME) ./cmd/main
+	GOOS=linux GOARCH=arm64 go build -ldflags="-s -w -X main.version=$(VERSION)" -o dist/linux-arm64/$(BINARY_NAME) ./cmd/main
 	GOOS=darwin GOARCH=amd64 go build -ldflags="-s -w -X main.version=$(VERSION)" -o dist/darwin-amd64/$(BINARY_NAME) ./cmd/main
+	GOOS=darwin GOARCH=arm64 go build -ldflags="-s -w -X main.version=$(VERSION)" -o dist/darwin-arm64/$(BINARY_NAME) ./cmd/main
 	GOOS=windows GOARCH=amd64 go build -ldflags="-s -w -X main.version=$(VERSION)" -o dist/windows-amd64/$(BINARY_NAME).exe ./cmd/main
+	GOOS=windows GOARCH=arm64 go build -ldflags="-s -w -X main.version=$(VERSION)" -o dist/windows-arm64/$(BINARY_NAME).exe ./cmd/main
 
 clean:
 	@echo "$(CYAN)Cleaning build artifacts...$(NC)"
