@@ -78,7 +78,6 @@ packagers:
       branch: main
     formulaName: pecel
     skipTemplates: []
-    dependencies: []
 
   chocolatey:
     active: RELEASE
