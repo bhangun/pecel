@@ -13,8 +13,9 @@ release:
     owner: bhangun
     name: pecel
     overwrite: true
-    prerelease: false
-    update: 
+    prerelease:
+      enabled: false
+    update:
       - body
       - name
 

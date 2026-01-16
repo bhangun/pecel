@@ -13,8 +13,9 @@ release:
     owner: bhangun
     name: pecel
     overwrite: true
-    prerelease: false
-    update: 
+    prerelease:
+      enabled: false
+    update:
       - body
       - name
 
@@ -46,6 +47,20 @@ distributions:
 signing:
   active: ALWAYS
   armored: true
+
+announce:
+  twitter:
+    active: NEVER
+  mastodon:
+    active: NEVER
+  linkedin:
+    active: NEVER
+  slack:
+    active: NEVER
+  discord:
+    active: NEVER
+  teams:
+    active: NEVER
 
 packagers:
   brew:
