@@ -40,6 +40,12 @@ jobs:
         run: |
           make build-all
 
+      - name: Extract version
+        id: extract_version
+        run: |
+          VERSION=${{ github.ref_name }}
+          echo "version=${VERSION#v}" >> $GITHUB_OUTPUT
+
       - name: JReleaser release
         uses: jreleaser/jreleaser-action@v2
         with:
@@ -47,4 +53,4 @@ jobs:
           arguments: release
         env:
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          JRELEASER_PROJECT_VERSION: ${{ github.ref_name }}
+          JRELEASER_PROJECT_VERSION: ${{ steps.extract_version.outputs.version }}

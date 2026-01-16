@@ -58,7 +58,7 @@ distributions:
         transform: './dist/windows-arm64/pecel.exe -> {{distributionName}}.exe'
 
 signing:
-  active: ALWAYS
+  active: NEVER
   pgp:
     armored: true
 
