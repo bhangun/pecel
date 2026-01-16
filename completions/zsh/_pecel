@@ -1,0 +1,27 @@
+#compdef pecel
+
+_pecel() {
+    local context state state_descr line
+    typeset -A opt_args
+    
+    _arguments \
+        '(-i --input)'{-i,--input}'[Input directory path]:directory:_files -/' \
+        '(-o --output)'{-o,--output}'[Output file path]:file:_files' \
+        '--ext[File extensions to include]:extensions:' \
+        '(-eh --exclude-hidden)'{-eh,--exclude-hidden}'[Exclude hidden files]' \
+        '--max-size[Maximum file size]:bytes:' \
+        '--min-size[Minimum file size]:bytes:' \
+        '--include[Regex pattern to include files]:pattern:' \
+        '--exclude[Regex pattern to exclude files]:pattern:' \
+        '--format[Output format]:format:(text json xml markdown)' \
+        '--compress[Compress output with gzip]' \
+        '--config[Load configuration from JSON file]:file:_files' \
+        '--parallel[Number of parallel processes]:number:' \
+        '--dry-run[Show what would be processed]' \
+        '--quiet[Suppress non-essential output]' \
+        '--verbose[Show detailed progress]' \
+        '(-v --version)'{-v,--version}'[Show version information]' \
+        '(-h --help)'{-h,--help}'[Show help message]'
+}
+
+_pecel "$@"

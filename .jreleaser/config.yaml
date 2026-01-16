@@ -1,0 +1,109 @@
+project:
+  name: pecel
+  description: A powerful CLI tool to recursively combine file contents from directories
+  links:
+    homepage: https://github.com/bhangun/pecel
+  authors:
+    - Bhangun
+  license: MIT
+  inceptionYear: 2024
+
+release:
+  github:
+    owner: bhangun
+    name: pecel
+    overwrite: true
+    prerelease: false
+    update: 
+      - body
+      - name
+
+distributions:
+  pecel:
+    type: BINARY
+    executable:
+      name: pecel
+    artifacts:
+      - path: ./bin/pecel
+        platform: 'linux_amd64'
+        transform: './bin/pecel -> {{distributionName}}'
+      - path: ./bin/pecel
+        platform: 'linux_arm64'
+        transform: './bin/pecel -> {{distributionName}}'
+      - path: ./bin/pecel
+        platform: 'darwin_amd64'
+        transform: './bin/pecel -> {{distributionName}}'
+      - path: ./bin/pecel
+        platform: 'darwin_arm64'
+        transform: './bin/pecel -> {{distributionName}}'
+      - path: ./bin/pecel.exe
+        platform: 'windows_amd64'
+        transform: './bin/pecel.exe -> {{distributionName}}.exe'
+      - path: ./bin/pecel.exe
+        platform: 'windows_arm64'
+        transform: './bin/pecel.exe -> {{distributionName}}.exe'
+
+signing:
+  active: ALWAYS
+  armored: true
+
+packagers:
+  brew:
+    active: ALWAYS
+    commitAuthor:
+      name: bhangun
+      email: bhangun@example.com
+    tap:
+      active: ALWAYS
+      owner: bhangun
+      name: homebrew-pecel
+      branch: main
+    formulaName: pecel
+    skipTemplates: []
+    dependencies:
+      - name: git
+
+  chocolatey:
+    active: RELEASE
+    commitAuthor:
+      name: bhangun
+      email: bhangun@example.com
+    repository:
+      active: ALWAYS
+      owner: bhangun
+      name: pecel-chocolatey
+      branch: main
+    packageName: pecel
+    project:
+      tags:
+        license: MIT
+        projectUrl: https://github.com/bhangun/pecel
+        packageSourceUrl: https://github.com/bhangun/pecel
+        projectSourceUrl: https://github.com/bhangun/pecel
+        docsUrl: https://github.com/bhangun/pecel/blob/main/README.md
+        mailingListUrl: https://github.com/bhangun/pecel/issues
+        bugTrackerUrl: https://github.com/bhangun/pecel/issues
+        tags: cli,go,golang,utility,tool,file-combiner
+        summary: Pecel CLI - File combination utility
+        description: |
+          A powerful CLI tool to recursively combine file contents from directories and subdirectories.
+        releaseNotesUrl: https://github.com/bhangun/pecel/releases/tag/{{tagName}}
+
+files:
+  active: ALWAYS
+  artifacts:
+    - path: 'bin/**/*pecel*'
+      extraProperties:
+        packager: brew,chocolatey
+    - path: 'dist/**/*pecel*'
+      extraProperties:
+        packager: brew,chocolatey
+
+publishers:
+  github:
+    active: ALWAYS
+    overwriteAssets: true
+    assets:
+      - name: Checksums
+        path: 'checksums.txt'
+        downloadUrl: 'https://github.com/bhangun/pecel/releases/download/{{tagName}}/checksums.txt'

@@ -1,0 +1,54 @@
+# Binaries
+bin/
+dist/
+pecel
+pecel.exe
+
+# Build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test artifacts
+coverage.out
+combined.txt
+output.json
+output.xml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment specific
+.env
+.venv
+env/
+venv/
+
+# Go specific
+vendor/
+*.mod
+*.sum
+
+# JReleaser
+out/
+.jreleaser/output/

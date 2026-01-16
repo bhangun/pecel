@@ -1,0 +1,57 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Calculate JReleaser version
+        id: jreleaser
+        shell: bash
+        run: |
+          VERSION=$(curl -s "https://api.github.com/repos/jreleaser/jreleaser/releases/latest" | jq -r '.tag_name // empty')
+          if [ -z "$VERSION" ] ; then
+            VERSION=$(curl -s "https://api.github.com/repos/jreleaser/jreleaser/releases" | jq -r '.[0].tag_name // empty')
+          fi
+          echo "version=${VERSION#v}" >> $GITHUB_OUTPUT
+
+      - name: Setup JReleaser
+        uses: jreleaser/setup-jreleaser@v1
+        with:
+          version: ${{ steps.jreleaser.outputs.version }}
+
+      - name: Build
+        run: make build
+
+      - name: JReleaser release
+        uses: jreleaser/release-action@v2
+        with:
+          arguments: release -d
+        env:
+          JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JRELEASER_PROJECT_VERSION: ${{ github.ref_name }}

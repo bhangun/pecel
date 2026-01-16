@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  pecel:
+    build: .
+    volumes:
+      - ./input:/data/input
+      - ./output:/data/output
+    command: -i /data/input -o /data/output/combined.txt --format json --verbose
+    
+  pecel-cli:
+    image: yourusername/pecel:latest
+    volumes:
+      - ${PWD}:/data
+    command: -i /data -o /data/output.txt --ext .go,.md --parallel 4
