@@ -137,7 +137,7 @@ publishers:
     tap:
       active: ALWAYS
       owner: bhangun
-      name: homebrew-pecel
+      name: pecel
       branch: main
     formulaName: pecel
     skipTemplates: []

@@ -52,11 +52,11 @@ packagers:
     active: ALWAYS
     commitAuthor:
       name: bhangun
-      email: bhangun@example.com
+      email: n90d1n9@gmail.com
     tap:
       active: ALWAYS
       owner: bhangun
-      name: homebrew-pecel
+      name: pecel
       branch: main
     formulaName: pecel
     skipTemplates: []
@@ -67,7 +67,7 @@ packagers:
     active: RELEASE
     commitAuthor:
       name: bhangun
-      email: bhangun@example.com
+      email: n90d1n9@gmail.com
     repository:
       active: ALWAYS
       owner: bhangun
