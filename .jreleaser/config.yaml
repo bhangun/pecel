@@ -108,12 +108,3 @@ files:
     - path: './dist/**/*pecel*'
       extraProperties:
         packager: brew,chocolatey
-
-publishers:
-  github:
-    active: ALWAYS
-    overwriteAssets: true
-    assets:
-      - name: Checksums
-        path: 'checksums.txt'
-        downloadUrl: 'https://github.com/bhangun/pecel/releases/download/{{tagName}}/checksums.txt'
