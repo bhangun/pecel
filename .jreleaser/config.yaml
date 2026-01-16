@@ -49,12 +49,12 @@ signing:
 
 packagers:
   brew:
-    active: ALWAYS
+    active: RELEASE
     commitAuthor:
       name: bhangun
       email: n90d1n9@gmail.com
     tap:
-      active: ALWAYS
+      active: RELEASE
       owner: bhangun
       name: homebrew-pecel
       branch: main
@@ -69,7 +69,7 @@ packagers:
       name: bhangun
       email: n90d1n9@gmail.com
     repository:
-      active: ALWAYS
+      active: RELEASE
       owner: bhangun
       name: pecel-chocolatey
       branch: main
@@ -90,7 +90,7 @@ packagers:
         releaseNotesUrl: https://github.com/bhangun/pecel/releases/tag/{{tagName}}
 
 files:
-  active: ALWAYS
+  active: RELEASE
   artifacts:
     - path: '/bin/**/*pecel*'
       extraProperties:
