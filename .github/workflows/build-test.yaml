@@ -19,10 +19,8 @@ jobs:
 
     - name: Build
       run: |
-        cd tools/pecel
         make build
 
     - name: Test
       run: |
-        cd tools/pecel
         make test

@@ -47,7 +47,7 @@ jobs:
 
       - name: Build
         run: |
-          cd tools/pecel
+          
           make build
 
       - name: JReleaser release
